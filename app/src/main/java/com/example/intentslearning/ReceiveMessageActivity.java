@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class ReceiveMessageActivity extends AppCompatActivity {
+
     private TextView textViewDisplayMessage;
 
     @Override

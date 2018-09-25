@@ -11,6 +11,7 @@ public class SendMessageActivity extends AppCompatActivity {
 
     private Button sendMessage;
     private EditText editTextMessage;
+    private Button shareMessage;
 
     public static final String EXTRA_SENT_MESSAGE = "the message";
 
@@ -30,10 +31,21 @@ public class SendMessageActivity extends AppCompatActivity {
                 startActivity(intentSendMessage);
             }
         });
+
+        shareMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentShare = new Intent(Intent.ACTION_SEND);
+                intentShare.setType("text/plain");
+                intentShare.putExtra(EXTRA_SENT_MESSAGE, editTextMessage.getText().toString());
+                startActivity(intentShare);
+            }
+        });
     }
 
     private void wireWidgets() {
         sendMessage = findViewById(R.id.button_sendMessage_send);
         editTextMessage = findViewById(R.id.editText_sendmessage_msg);
+        shareMessage = findViewById(R.id.button_sendmessage_share);
     }
 }
